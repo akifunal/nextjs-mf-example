@@ -1,0 +1,47 @@
+{
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"start": "turbo start",
+		"start-standalone": "turbo start-standalone",
+		"serve": "turbo serve",
+		"format": "turbo format",
+		"format:all": "prettier -c .",
+		"format:fix": "turbo format:fix",
+		"format:fix:all": "prettier --write .",
+		"lint": "turbo lint",
+		"lint:fix": "turbo lint:fix",
+		"types:check": "turbo types:check",
+		"test": "turbo test",
+		"clean": "turbo clean",
+		"clean-self": "rm -rf .turbo node_modules .cache",
+		"list-packages": "syncpack list",
+		"list-mismatches": "syncpack list-mismatches",
+		"fix-mismatches": "syncpack fix-mismatches && pnpm install",
+		"update-packages": "syncpack update && pnpm install",
+		"publish-packages": "turbo run build lint test && changeset version && changeset publish",
+		"commit": "cz"
+	},
+	"devDependencies": {
+		"@changesets/cli": "^2.26.2",
+		"@commitlint/cli": "^18.2.0",
+		"@commitlint/config-conventional": "^18.1.0",
+		"commitizen": "^4.3.0",
+		"cz-conventional-changelog": "^3.3.0",
+		"eslint": "^8.53.0",
+		"lefthook": "^1.5.2",
+		"prettier": "^3.0.3",
+		"prettier-config-custom": "workspace:*",
+		"syncpack": "^11.2.1",
+		"tsconfig": "workspace:*",
+		"turbo": "^1.10.16"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
+	},
+	"name": "mf-nextjs",
+	"packageManager": "pnpm@8.10.2"
+}

@@ -1,0 +1,22 @@
+pre-commit:
+    parallel: true
+    commands:
+        package:mismatches:
+            run: pnpm list-mismatches
+        lint:fix:
+            run: pnpm lint:fix && git add {staged_files}
+        format:
+            glob: '*.{js,ts,jsx,tsx,cjs,mjs,html,css,md,mdx,json,ylm,yaml}'
+            run: pnpm prettier {staged_files} -w && git add {staged_files}
+        types:check:
+            run: pnpm types:check
+
+post-commit:
+    commands:
+        testing:
+            run: pnpm test
+
+commit-msg:
+    commands:
+        'lint commit message':
+            run: pnpm commitlint --edit {1}
